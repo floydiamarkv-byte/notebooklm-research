@@ -108,4 +108,4 @@ PRs welcome! If you improve the research workflow, add new output formats, or fi
 
 ---
 
-*Built with ❤️ by [@eliuhads](https://github.com/eliuhads) using Antigravity + NotebookLM MCP*
+*Built with ❤️ by **[Floydia](https://floydia.site)** • [@floydiamarkv](https://github.com/floydiamarkv-byte) using Antigravity + NotebookLM MCP*
