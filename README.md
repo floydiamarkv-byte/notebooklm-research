@@ -1,111 +1,143 @@
-# 🔬 NotebookLM Auto-Research Skill
+<div align="center">
 
-> An autonomous research skill for [Google Gemini CLI](https://github.com/google-gemini/gemini-cli) / Antigravity that leverages **NotebookLM MCP** to transform any topic into a fully documented research project.
+# 🔬 notebooklm-research
+### **Autonomous Deep Research Engine & Knowledge Vault Compiler**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![MCP](https://img.shields.io/badge/MCP-NotebookLM-4285F4?logo=google)](https://notebooklm.google.com)
+[![Floydia Project](https://img.shields.io/badge/Powered%20By-Floydia-10D2AD.svg?style=for-the-badge&logo=crystal&logoColor=white&labelColor=0B111C)](https://floydia.site)
+[![MCP](https://img.shields.io/badge/Protocol-NotebookLM%20MCP-4285F4?style=for-the-badge&logo=google&logoColor=white&labelColor=0B111C)](https://notebooklm.google.com)
+[![Agentic AI](https://img.shields.io/badge/Agentic%20Engine-Antigravity%20%2F%20Claude%20Code-10D6BD?style=for-the-badge&logo=openai&logoColor=white&labelColor=0B111C)](https://floydia.site)
+[![License: MIT](https://img.shields.io/badge/License-MIT-70CBAC?style=for-the-badge&labelColor=0B111C)](LICENSE)
 
----
+<br/>
 
-## ✨ What it does
+> **"Transform raw queries into rigorous, multi-perspective knowledge vaults. Built on NotebookLM MCP and the MIT Research Method to eliminate hallucinations."**
 
-Given a research topic, this skill autonomously:
+[🚀 Quick Start](#-quick-start) • [🏛️ Research Architecture](#-research-architecture) • [📦 Deliverables](#-structured-deliverables) • [🛠️ MCP Tools](#-mcp-tools-matrix) • [🤝 Support](#-author--support)
 
-1. **Intake** — Gathers scope through structured questions (topic, objective, depth, output format)
-2. **Research** — Runs multi-round web searches via NotebookLM MCP (`research_start` → `research_poll` → `research_import`)
-3. **Analyze** — Cross-queries imported sources to extract insights, contradictions, and gaps
-4. **Deliver** — Generates structured Markdown deliverables + optional multimedia outputs
-
-### 📦 Output files
-
-```
-INVESTIGACION_{PROJECT_NAME}/
-├── README.md               ← Index with links to all files
-├── resumen_ejecutivo.md     ← 500-800 word executive summary
-├── informe_detallado.md     ← Full report with inline citations [Source N]
-├── mapa_mental.md           ← Mermaid mindmap diagram
-├── fuentes.md               ← Source table: URL, date, summary, relevance
-└── preguntas_abiertas.md    ← Knowledge gaps & next steps
-```
-
-### 🎙️ Optional multimedia outputs (via NotebookLM)
-
-- Audio Overview (podcast-style)
-- Video Overview
-- Slide Deck
-- Flashcards
-- Infographic
-- Comparative Data Table
+</div>
 
 ---
 
-## 🚀 Installation
+## 📌 Overview
 
-### For Gemini CLI / Antigravity
+**notebooklm-research** is an autonomous AI agent skill built for **Google Antigravity, OpenCode, Claude Code, and Cursor**. It orchestrates the official **Google NotebookLM MCP Server** to conduct exhaustive, multi-source investigations on any technical, scientific, or market domain.
 
-Copy the skill to your skills directory:
+Unlike simple web-search prompts that hallucinate summaries from top Google snippets, `notebooklm-research`:
+1. **Curates 50 to 100+ Verified Sources**: Imports full papers, technical docs, and articles directly into private NotebookLM notebooks.
+2. **Applies the MIT Deep Research Method**: Stress-tests findings across 5 Mental Models (First Principles, Second-Order Thinking, Inversion, Pareto, Red Teaming) and 3 Expert Debates.
+3. **Compiles Complete Obsidian Knowledge Vaults (MOC)**: Delivers structured Markdown archives with inline grounding citations `[Source N]`, interactive mindmaps, audio overviews, and open inquiry matrices.
+
+---
+
+## 🏗️ Research Architecture
+
+```mermaid
+flowchart TD
+    subgraph Phase 1: Intake & Exploration
+        A[🎯 Research Topic & Intent] --> B[📋 Scope & Depth Framing]
+        B --> C[🔍 NotebookLM MCP `research_start`]
+    end
+
+    subgraph Phase 2: Knowledge Ingestion
+        C --> D[📥 Multi-Source Discovery & Curation]
+        D -->|50-100+ Sources| E[📚 Dedicated Notebook Vault]
+    end
+
+    subgraph Phase 3: MIT Multi-Perspective Synthesis
+        E --> F[🧠 5 Mental Models Analysis]
+        E --> G[⚔️ 3-Way Expert Debates & Inversion]
+        F & G --> H[📊 Grounded Insights & Citations]
+    end
+
+    subgraph Phase 4: Deliverables Matrix
+        H --> I[📄 Executive Brief 500-800w]
+        H --> J[📑 Technical Deep-Dive Report]
+        H --> K[🗺️ Mermaid Mindmap & MOC]
+        H --> L[🎙️ NotebookLM Audio / Slides]
+    end
+
+    style A fill:#0B111C,stroke:#10D2AD,color:#fff
+    style B fill:#152638,stroke:#10D6BD,color:#fff
+    style C fill:#10D2AD,stroke:#0B111C,color:#0B111C
+    style D fill:#152638,stroke:#70CBAC,color:#fff
+    style E fill:#0B111C,stroke:#10D2AD,color:#fff
+    style F fill:#152638,stroke:#10D6BD,color:#fff
+    style G fill:#152638,stroke:#10D6BD,color:#fff
+    style H fill:#10D2AD,stroke:#0B111C,color:#0B111C
+    style I fill:#152638,stroke:#70CBAC,color:#fff
+    style J fill:#152638,stroke:#70CBAC,color:#fff
+    style K fill:#152638,stroke:#70CBAC,color:#fff
+    style L fill:#152638,stroke:#70CBAC,color:#fff
+```
+
+---
+
+## 📦 Structured Deliverables
+
+For every research task, the engine generates an isolated, publication-ready directory:
+
+```
+INVESTIGACION_{PROJECT_SLUG}/
+├── README.md               ← Master Table of Contents with relational links
+├── resumen_ejecutivo.md     ← High-impact 500-800 word executive briefing
+├── informe_detallado.md     ← Exhaustive thesis with inline citations [Source N]
+├── mapa_mental.md           ← Complete Mermaid mindmap hierarchy
+├── fuentes.md               ← Verified source audit: URL, Date, Relevance score
+└── preguntas_abiertas.md    ← Unresolved questions & future inquiry roadmap
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Install Skill in Your Agent Environment
 
 ```bash
-mkdir -p ~/.gemini/antigravity/skills/auto-research-notebooklm
-cp SKILL.md ~/.gemini/antigravity/skills/auto-research-notebooklm/
+# For Google Antigravity / OpenCode / Claude Code
+mkdir -p ~/.gemini/antigravity/skills/notebooklm-research
+git clone https://github.com/floydiamarkv-byte/notebooklm-research.git ~/.gemini/antigravity/skills/notebooklm-research
 ```
 
-### Prerequisites
+### 2. Prerequisites
+- Configured and running **NotebookLM MCP Server**
+- Authenticated Google account with access to [NotebookLM](https://notebooklm.google.com)
 
-- **NotebookLM MCP server** must be configured and authenticated
-- A Google account with access to [NotebookLM](https://notebooklm.google.com)
+### 3. Usage Examples
+
+Just ask your AI agent naturally:
+- *"Realiza una investigación profunda sobre arquitecturas de memoria vectorial para agentes autónomos."*
+- *"Deep-dive research on Post-Quantum Cryptography standards for enterprise Linux."*
+- *"Compila un dossier técnico sobre microservicios vs arquitecturas modulares en 2026."*
 
 ---
 
-## 💬 Usage
+## 🛠️ MCP Tools Matrix
 
-Just ask naturally — the skill activates on research-intent signals:
-
-```
-"Investiga sobre energía solar para mi tesis"
-"Hazme un deep-dive sobre microservicios vs monolitos"
-"Prepárame un briefing sobre regulación de IA en la UE"
-"Busca información sobre técnicas de prompt engineering"
-```
-
-### Won't activate for:
-```
-"¿Cuánto pesa el sol?"           → Direct answer
-"Traduce esto al inglés"         → Not research
-"¿Cuántos paneles solares necesito?" → Single calculation
-```
-
-**Decision rule**: If the answer requires ≥3 sources to be rigorous, the skill activates. Otherwise, it responds directly.
+| Tool | Capability |
+|------|------------|
+| `notebook_create` | Initializes dedicated research workspace |
+| `notebook_add_url/text` | Ingests URLs, PDFs, whitepapers & local files |
+| `research_start` | Dispatches autonomous web & Drive deep searches |
+| `research_poll` ➔ `research_import` | Evaluates and imports discovered citations |
+| `notebook_query` | Grounded cross-querying without LLM hallucination |
+| `report_create` | Formats comprehensive multi-chapter reports |
+| `mind_map_generate` | Produces visual conceptual trees |
+| `audio/video_overview_create` | Generates deep conversational podcast overviews |
 
 ---
 
-## ⚙️ MCP Tools Used
+## 👤 Author & Support
 
-| Tool | Purpose |
-|------|---------|
-| `notebook_create` | Create dedicated research notebook |
-| `notebook_add_url/text/local_file` | Add user-provided sources |
-| `research_start` | Launch web/Drive searches |
-| `research_poll` → `research_import` | Monitor and import discovered sources |
-| `notebook_query` | Extract insights from loaded sources |
-| `report_create` | Generate structured report |
-| `mind_map_generate` + `mind_map_save` | Create visual mind maps |
-| `audio/video_overview_create` | Generate multimedia summaries |
-| `slide_deck_create` | Generate presentations |
-| `flashcards_create` | Generate study cards |
+Developed by **[Floydia](https://floydia.site)** — Led by **Eliú Hurtado** (+25 years in IT systems, applied AI & automation).
+
+* 🌐 **Website**: [https://floydia.site](https://floydia.site)
+* 💼 **LinkedIn**: [Eliú Hurtado](https://linkedin.com/in/eliutec)
+* 🐛 **Issues & Feedback**: [Open a GitHub Issue](https://github.com/floydiamarkv-byte/notebooklm-research/issues)
 
 ---
 
-## 📄 License
+<div align="center">
 
-MIT — use it, fork it, improve it.
+Distributed under the [MIT License](LICENSE) • **Desde la infraestructura, todo.**
 
----
-
-## 🤝 Contributing
-
-PRs welcome! If you improve the research workflow, add new output formats, or fix edge cases, feel free to submit.
-
----
-
-*Built with ❤️ by **[Floydia](https://floydia.site)** • [@floydiamarkv](https://github.com/floydiamarkv-byte) using Antigravity + NotebookLM MCP*
+</div>
