@@ -1,6 +1,9 @@
 <div align="center">
 
 # 🔬 notebooklm-research
+
+[![CI](https://github.com/floydiamarkv-byte/notebooklm-research/actions/workflows/ci.yml/badge.svg)](https://github.com/floydiamarkv-byte/notebooklm-research/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ### **Autonomous Deep Research Engine & Knowledge Vault Compiler**
 
 [![Floydia Project](https://img.shields.io/badge/Powered%20By-Floydia-10D2AD.svg?style=for-the-badge&logo=crystal&logoColor=white&labelColor=0B111C)](https://floydia.site)

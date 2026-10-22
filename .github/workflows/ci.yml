@@ -1,0 +1,42 @@
+name: CI — NotebookLM Research Skill
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install "PyYAML>=6.0"
+
+      - name: "Validar el frontmatter de SKILL.md"
+        run: |
+          python - <<'PY'
+          import sys, yaml
+          raw = open("SKILL.md", encoding="utf-8").read()
+          if not raw.startswith("---"):
+              print("SKILL.md sin frontmatter YAML")
+              sys.exit(1)
+          meta = yaml.safe_load(raw.split("---", 2)[1]) or {}
+          for key in ("name", "description"):
+              if not meta.get(key):
+                  print(f"SKILL.md: falta la clave '{key}'")
+                  sys.exit(1)
+          print("SKILL.md valido:", meta.get("name"))
+          PY
